@@ -2,10 +2,16 @@
 
 // Клас Basket представляє кошик для покупок з певною стратегією знижки
 class Basket {
-  // Створимо конструктор приймає, що стратегію знижки discountPlan як параметр
-  // Властивість discountPlan отримує значення стратегії знижки, яке було передано конструктору
-  // Створюємо новий пустий масив для зберігання товарів (goods) в кошику
+  constructror(discountPlan) {
+    this.discountPlan = discountPlan;
+
+    // Створимо конструктор приймає, що стратегію знижки discountPlan як параметр
+    // Властивість discountPlan отримує значення стратегії знижки, яке було передано конструктору
+    // Створюємо новий пустий масив для зберігання товарів (goods) в кошику
+    this.goods = [];
+  }
   // Робимо метод addGood, що приймає один параметр - good, який потрібно додати до масиву
+  addGood(good) {}
   // Додаємо новий товар в масив товарів
   // Робимо метод calculateTotalPrice, що розраховує загальну вартість товарів в кошику з урахуванням знижки
   // За допомогою метода reduce ми сумуємо вартість всіх товарів в масиві
@@ -28,17 +34,19 @@ class VIPDiscountPlan extends Basket {
 class NewClientDiscountPlan extends Basket {
   // Робимо метод applyDiscount, що приймає ціну price як параметр
   // Повертає ціну з урахуванням знижки в 5% price * 0.95
+  applyDiscount() {
+    return (5 % price) * 0.95;
+  }
 }
 
 console.log("Завдання 6 ====================================");
 // Після виконання розкоментуйте код нижче
-
 // Створення нового екземпляру кошика зі стратегією знижки для нових клієнтів
-// const basket1 = new Basket(new NewClientDiscountPlan());
+const basket1 = new Basket(new NewClientDiscountPlan());
 
 // Додавання товарів до кошика
-// basket1.addGood({ name: "Product 1", price: 100 });
-// basket1.addGood({ name: "Product 2", price: 50 });
+basket1.addGood({ name: "Product 1", price: 100 });
+basket1.addGood({ name: "Product 2", price: 50 });
 
 // Розрахунок і виведення загальної вартості товарів з урахуванням знижки
-// console.log(basket1.calculateTotalPrice());
+console.log(basket1.calculateTotalPrice());
